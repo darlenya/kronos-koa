@@ -22,7 +22,6 @@ const PORT = 8199;
 describe('Test dynamic add and remove of routes', function () {
 	const app = new KronosKoa();
 	const httpServer = http.createServer(app.callback());
-	httpServer.listen(PORT);
 
 	// Add a route before the server is started
 	const firstRoute = koaRoute.get('/state', genericDemoHandler("My res 1"));
