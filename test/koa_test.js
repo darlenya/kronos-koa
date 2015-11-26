@@ -16,7 +16,6 @@ const http = require('http');
 const KronosKoa = require('../lib/application_kronos');
 const koaRoute = require('koa-route');
 
-
 const PORT = 8199;
 
 describe('Test dynamic add and remove of routes', function () {
