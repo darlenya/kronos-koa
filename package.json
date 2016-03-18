@@ -28,7 +28,7 @@
     "chai": "3.5.0",
     "chai-http": "^2.0.1",
     "istanbul": "0.4.2",
-    "koa-route": "^3.0.0",
+    "koa-route": "^3.1.0",
     "mocha": "2.4.5",
     "semantic-release": "6.2.0",
     "jsdoc": "3.4.0"
