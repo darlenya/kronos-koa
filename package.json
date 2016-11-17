@@ -32,7 +32,7 @@
     "jsdoc": "3.4.3",
     "koa-route": "^3.2.0",
     "mocha": "3.1.2",
-    "semantic-release": "6.3.1"
+    "semantic-release": "6.3.2"
   },
   "contributors": [
     {
