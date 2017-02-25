@@ -4,10 +4,15 @@
   "description": "Koa modifications needed by Kronos",
   "main": "lib/application_kronos.js",
   "scripts": {
-    "cover": "./node_modules/istanbul/lib/cli.js cover --hook-run-in-context ./node_modules/mocha/bin/_mocha -- --R spec --U exports tests/*_test.js",
+    "cover": "nyc npm test",
     "doc": "./node_modules/.bin/jsdoc lib/*.js",
-    "test": "./node_modules/.bin/mocha tests/*_test.js",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "test": "mocha tests/*_test.js",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "precover": "npm run prepublish",
+    "pretest": "npm run prepublish",
+    "posttest": "markdown-doctest",
+    "prepublish": "rollup --output=lib/application_kronos.js -c -- {{module}}",
+    "docs": "jsdoc2md -l off -t doc/README.hbs -f src/*.js >README.md"
   },
   "repository": {
     "type": "git",
@@ -25,14 +30,16 @@
     "statuses": "^1.3.1"
   },
   "devDependencies": {
-    "chai": "3.5.0",
+    "chai": "^3.5.0",
     "chai-http": "^1.0.0",
     "cz-conventional-changelog": "^2.0.0",
-    "istanbul": "0.4.5",
-    "jsdoc": "3.4.3",
     "koa-route": "^3.2.0",
-    "mocha": "3.2.0",
-    "semantic-release": "^6.3.6"
+    "mocha": "^3.2.0",
+    "semantic-release": "^6.3.6",
+    "jsdoc-to-markdown": "^3.0.0",
+    "markdown-doctest": "^0.9.1",
+    "nyc": "^10.1.2",
+    "rollup": "^0.41.4"
   },
   "contributors": [
     {
@@ -46,12 +53,21 @@
   ],
   "license": "BSD-2-Clause",
   "engines": {
-    "node": ">=6.9.1"
+    "node": ">=7.6.0"
   },
   "keywords": [],
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "nyc": {
+    "include": [
+      "dist/**/*.js"
+    ],
+    "reporter": [
+      "lcov"
+    ],
+    "report-dir": "./coverage"
   }
 }
