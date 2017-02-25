@@ -2,16 +2,16 @@
   "name": "kronos-koa",
   "version": "0.0.0-semantic-release",
   "description": "Koa modifications needed by Kronos",
-  "main": "lib/application_kronos.js",
+  "main": "src/application_kronos.js",
+  "module": "dist/application_kronos.js",
   "scripts": {
     "cover": "nyc npm test",
-    "doc": "./node_modules/.bin/jsdoc lib/*.js",
     "test": "mocha tests/*_test.js",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "precover": "npm run prepublish",
     "pretest": "npm run prepublish",
     "posttest": "markdown-doctest",
-    "prepublish": "rollup --output=lib/application_kronos.js -c -- {{module}}",
+    "prepublish": "rollup --output=dist/application_kronos.js -c -- src/application_kronos.js",
     "docs": "jsdoc2md -l off -t doc/README.hbs -f src/*.js >README.md"
   },
   "repository": {

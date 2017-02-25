@@ -13,7 +13,7 @@ const should = chai.should();
 const route = require('koa-route');
 const http = require('http');
 
-const KronosKoa = require('../lib/application_kronos');
+const KronosKoa = require('../dist/application_kronos');
 const koaRoute = require('koa-route');
 
 const PORT = 8199;
