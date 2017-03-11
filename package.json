@@ -11,7 +11,7 @@
     "precover": "npm run prepublish",
     "pretest": "npm run prepublish",
     "posttest": "markdown-doctest",
-    "prepublish": "rollup --output=dist/application_kronos.js -c -- dist/application_kronos.js",
+    "prepublish": "rollup --output=dist/application_kronos.js -c -- src/application_kronos.js",
     "docs": "jsdoc2md -l off -t doc/README.hbs -f src/*.js >README.md"
   },
   "repository": {
