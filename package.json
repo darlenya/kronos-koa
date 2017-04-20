@@ -2,8 +2,8 @@
   "name": "kronos-koa",
   "version": "0.0.0-semantic-release",
   "description": "Koa modifications needed by Kronos",
-  "main": "src/application_kronos.js",
-  "module": "dist/application_kronos.js",
+  "main": "dist/application_kronos.js",
+  "module": "src/application_kronos.js",
   "scripts": {
     "cover": "nyc npm test",
     "test": "mocha tests/*_test.js",
