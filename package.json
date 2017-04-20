@@ -41,19 +41,16 @@
     "nyc": "^10.2.0",
     "rollup": "^0.41.6"
   },
-  "contributors": [
-    {
-      "name": "Torsten Link",
-      "email": "torstenlink@gmx.de"
-    },
-    {
-      "name": "Markus Felten",
-      "email": "markus.felten@gmx.de"
-    }
-  ],
+  "contributors": [{
+    "name": "Torsten Link",
+    "email": "torstenlink@gmx.de"
+  }, {
+    "name": "Markus Felten",
+    "email": "markus.felten@gmx.de"
+  }],
   "license": "BSD-2-Clause",
   "engines": {
-    "node": ">=7.7.2"
+    "node": ">=7.9.0"
   },
   "keywords": [],
   "config": {
@@ -69,5 +66,10 @@
       "lcov"
     ],
     "report-dir": "./coverage"
+  },
+  "template": {
+    "repository": {
+      "url": "https://github.com/Kronos-Tools/npm-package-template.git"
+    }
   }
 }
