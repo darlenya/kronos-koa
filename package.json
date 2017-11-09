@@ -5,7 +5,7 @@
   "main": "dist/application_kronos.js",
   "module": "src/application_kronos.js",
   "scripts": {
-    "cover": "nyc npm test",
+    "cover": "nyc --temp-directory build/nyc npm test",
     "test": "mocha tests/*-test.js",
     "semantic-release": "semantic-release",
     "precover": "rollup -c",
