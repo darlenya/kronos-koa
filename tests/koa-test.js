@@ -8,82 +8,48 @@ const koaRoute = require('koa-route');
 
 const PORT = 8199;
 
-test('Test dynamic add and remove of routes test route static', async t => {
+function makeServer(port = PORT) {
   const app = new KronosKoa();
-  const httpServer = http.createServer(app.callback());
+  const server = http.createServer(app.callback());
 
   // Add a route before the server is started
-  const firstRoute = koaRoute.get('/state', genericDemoHandler('My res 1'));
-  app.use(firstRoute);
-  app.listen(PORT);
+  const route = koaRoute.get('/state', genericDemoHandler('My res 1'));
+  app.use(route);
+  app.listen(port);
 
-  const response = await got(`http://localhost:${PORT}/state`);
+  return { app, route, server };
+}
+
+test('Test dynamic add and remove of routes route static', async t => {
+  const { server } = makeServer(PORT + 1);
+
+  const response = await got(`http://localhost:${PORT + 1}/state`);
   t.is(response.body, 'My res 1');
-
-  /*
-  console.log(response);
-  t.is(response.status, 200);
-*/
-  /*
-  chai
-    .request('http://localhost:' + PORT)
-    .get('/state')
-    .then(response => {
-      expect(response).to.have.status(200);
-      expect(response.text).to.equal('My res 1');
-      done();
-    })
-    .catch(function(err) {
-      done(err);
-    });
-
-    */
 });
 
-/*
-describe('Test dynamic add and remove of routes', () => {
-  it('test route static', done => {
-    chai
-      .request('http://localhost:' + PORT)
-      .get('/state')
-      .then(response => {
-        expect(response).to.have.status(200);
-        expect(response.text).to.equal('My res 1');
-        done();
-      })
-      .catch(function(err) {
-        done(err);
-      });
-  });
+test('Test dynamic add and remove of routes add new route', async t => {
+  const { server, app } = makeServer(PORT + 2);
 
-  it('test add new route', done => {
-    app.use(koaRoute.get('/dynamic', genericDemoHandler('My dynamic 1')));
-    chai
-      .request('http://localhost:' + PORT)
-      .get('/dynamic')
-      .then(response => {
-        expect(response).to.have.status(200);
-        expect(response.text).to.equal('My dynamic 1');
-        done();
-      })
-      .catch(err => done(err));
-  });
+  app.use(koaRoute.get('/dynamic', genericDemoHandler('My dynamic 1')));
 
-  it('test remove first route', done => {
-    app.delete(firstRoute);
-
-    app.use(koaRoute.get('/dynamic', genericDemoHandler('My dynamic 1')));
-    chai
-      .request('http://localhost:' + PORT)
-      .get('/state')
-      .then(response => {
-        expect(response).to.have.status(404);
-        done();
-      })
-      .catch(err => done(err));
-  });
+  const response = await got(`http://localhost:${PORT + 2}/dynamic`);
+  t.is(response.body, 'My dynamic 1');
 });
-*/
+
+test('Test dynamic add and remove of routes remove first route', async t => {
+  const { server, app, route } = makeServer(PORT + 3);
+
+  app.delete(route);
+
+  app.use(koaRoute.get('/dynamic', genericDemoHandler('My dynamic 1')));
+
+  try {
+    const response = await got(`http://localhost:${PORT + 3}/state`);
+    t.is(response.statusCode, 404);
+  } catch (response) {
+    t.is(response.statusCode, 404);
+  }
+});
 
 function genericDemoHandler(staticResponse) {
   return ctx => {
