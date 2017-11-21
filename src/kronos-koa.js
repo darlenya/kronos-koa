@@ -6,10 +6,10 @@ const onFinished = require('on-finished');
 
 const Koa = require('koa');
 
-class ApplicationKronos extends Koa {
+export class ApplicationKronos extends Koa {
   /**
-	 * Overwrite the super function. It will update the middleware chain
-	 */
+   * Overwrite the super function. It will update the middleware chain
+   */
   use(fn) {
     super.use(fn);
     this.composedMiddleware = compose(this.middleware);
@@ -17,10 +17,10 @@ class ApplicationKronos extends Koa {
   }
 
   /**
-	 * Overwrites the callback. This is now a dynamic callback.
-	 * The returned function takes the changing generator chain
-	 * instead of a fixed one.
-	 */
+   * Overwrites the callback. This is now a dynamic callback.
+   * The returned function takes the changing generator chain
+   * instead of a fixed one.
+   */
   callback() {
     if (!this.listeners('error').length) this.on('error', this.onerror);
 
@@ -30,23 +30,25 @@ class ApplicationKronos extends Koa {
       res.statusCode = 404;
       const ctx = this.createContext(req, res);
       onFinished(res, ctx.onerror);
-      this.composedMiddleware(ctx).then(() => respond(ctx)).catch(ctx.onerror);
+      this.composedMiddleware(ctx)
+        .then(() => respond(ctx))
+        .catch(ctx.onerror);
     };
   }
 
   /**
-	 * Returns true if there is still registered middleware
-	 * @return status True if there is still registered middleware
-	 */
+   * Returns true if there is still registered middleware
+   * @return status True if there is still registered middleware
+   */
   hasMiddleware() {
     return this.middleware.length > 0;
   }
 
   /**
-	 * Removes an existing generator function
-	 * @param {GeneratorFunction} fn The generator function to be deleted
-	 * @api public
-	 */
+   * Removes an existing generator function
+   * @param {GeneratorFunction} fn The generator function to be deleted
+   * @api public
+   */
   delete(fn) {
     const index = this.middleware.indexOf(fn);
     if (index >= 0) {
@@ -108,5 +110,3 @@ function respond(ctx) {
   }
   res.end(body);
 }
-
-module.exports = ApplicationKronos;

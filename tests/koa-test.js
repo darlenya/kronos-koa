@@ -1,14 +1,7 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-chai.use(chaiHttp);
+import { KronosKoa } from '../src/kronos-koa';
 
-const assert = chai.assert;
-const expect = chai.expect;
-const should = chai.should();
 const route = require('koa-route');
 const http = require('http');
-
-const KronosKoa = require('../dist/application_kronos');
 const koaRoute = require('koa-route');
 
 const PORT = 8199;
