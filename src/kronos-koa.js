@@ -6,7 +6,7 @@ const onFinished = require('on-finished');
 
 const Koa = require('koa');
 
-export class ApplicationKronos extends Koa {
+export class KronosKoa extends Koa {
   /**
    * Overwrite the super function. It will update the middleware chain
    */
