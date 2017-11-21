@@ -88,7 +88,7 @@ function respond(ctx) {
   }
 
   // status body
-  if (null === body) {
+  if (null == body) {
     body = ctx.message || String(code);
     if (!res.headersSent) {
       ctx.type = 'text';
@@ -98,7 +98,6 @@ function respond(ctx) {
   }
 
   // responses
-  if (body === undefined) return res.end();
   if (Buffer.isBuffer(body)) return res.end(body);
   if ('string' == typeof body) return res.end(body);
   if (body instanceof Stream) return body.pipe(res);
