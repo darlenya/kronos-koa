@@ -6,6 +6,9 @@ const onFinished = require('on-finished');
 
 const Koa = require('koa');
 
+/**
+ * Kronos variant of koa
+ */
 export class KronosKoa extends Koa {
   /**
    * Overwrite the super function. It will update the middleware chain
@@ -38,7 +41,7 @@ export class KronosKoa extends Koa {
 
   /**
    * Returns true if there is still registered middleware
-   * @return status True if there is still registered middleware
+   * @return {boolean} status True if there is still registered middleware
    */
   hasMiddleware() {
     return this.middleware.length > 0;
@@ -47,7 +50,7 @@ export class KronosKoa extends Koa {
   /**
    * Removes an existing generator function
    * @param {GeneratorFunction} fn The generator function to be deleted
-   * @api public
+   * @return {void}
    */
   delete(fn) {
     const index = this.middleware.indexOf(fn);
