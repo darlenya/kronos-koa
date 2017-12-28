@@ -1,9 +1,21 @@
 {
   "name": "kronos-koa",
   "version": "0.0.0-semantic-release",
-  "description": "Koa modifications needed by Kronos",
   "main": "dist/kronos-koa.js",
   "module": "src/kronos-koa.js",
+  "description": "Koa modifications needed by Kronos",
+  "keywords": [],
+  "contributors": [
+    {
+      "name": "Torsten Link",
+      "email": "torstenlink@gmx.de"
+    },
+    {
+      "name": "Markus Felten",
+      "email": "markus.felten@gmx.de"
+    }
+  ],
+  "license": "BSD-2-Clause",
   "scripts": {
     "cover": "nyc --temp-directory build/nyc ava",
     "test": "ava",
@@ -15,14 +27,6 @@
     "prepare": "rollup -c",
     "lint": "documentation lint src/kronos-koa.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Kronos-Integration/kronos-koa.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Kronos-Integration/kronos-koa/issues"
-  },
-  "homepage": "https://github.com/Kronos-Integration/kronos-koa#readme",
   "dependencies": {
     "koa": "^2.4.1",
     "koa-compose": "^4.0.0",
@@ -42,39 +46,17 @@
     "xo": "^0.19.0",
     "documentation": "^5.3.5"
   },
-  "contributors": [
-    {
-      "name": "Torsten Link",
-      "email": "torstenlink@gmx.de"
-    },
-    {
-      "name": "Markus Felten",
-      "email": "markus.felten@gmx.de"
-    }
-  ],
-  "license": "BSD-2-Clause",
   "engines": {
     "node": ">=8.9.3"
   },
-  "keywords": [],
-  "nyc": {
-    "include": [
-      "build/*-test.js",
-      "src/**/*.js"
-    ],
-    "reporter": [
-      "lcov"
-    ],
-    "report-dir": "./build/coverage"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kronos-Integration/kronos-koa.git"
   },
-  "template": {
-    "repository": {
-      "url": "https://github.com/arlac77/npm-package-template.git"
-    }
+  "bugs": {
+    "url": "https://github.com/Kronos-Integration/kronos-koa/issues"
   },
-  "xo": {
-    "space": true
-  },
+  "homepage": "https://github.com/Kronos-Integration/kronos-koa#readme",
   "ava": {
     "files": [
       "build/*-test.js"
@@ -85,5 +67,23 @@
     "require": [
       "babel-register"
     ]
+  },
+  "nyc": {
+    "include": [
+      "build/*-test.js",
+      "src/**/*.js"
+    ],
+    "reporter": [
+      "lcov"
+    ],
+    "report-dir": "./build/coverage"
+  },
+  "xo": {
+    "space": true
+  },
+  "template": {
+    "repository": {
+      "url": "https://github.com/arlac77/npm-package-template.git"
+    }
   }
 }
