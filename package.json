@@ -41,10 +41,10 @@
     "got": "^8.1.0",
     "koa-route": "^3.2.0",
     "markdown-doctest": "^0.9.1",
-    "nyc": "^11.5.0",
+    "nyc": "^11.6.0",
     "rollup": "^0.56.5",
     "rollup-plugin-multi-entry": "^2.0.2",
-    "semantic-release": "^15.0.2",
+    "semantic-release": "^15.0.3",
     "travis-deploy-once": "^4.4.0"
   },
   "engines": {
