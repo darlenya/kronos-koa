@@ -1,6 +1,9 @@
 {
   "name": "kronos-koa",
   "version": "0.0.0-semantic-release",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/kronos-koa.js",
   "module": "src/kronos-koa.js",
   "description": "Koa modifications needed by Kronos",
@@ -41,7 +44,7 @@
     "got": "^8.1.0",
     "koa-route": "^3.2.0",
     "markdown-doctest": "^0.9.1",
-    "nyc": "^11.8.0",
+    "nyc": "^12.0.1",
     "rollup": "^0.59.4",
     "rollup-plugin-multi-entry": "^2.0.2",
     "semantic-release": "^15.5.0",
