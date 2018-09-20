@@ -1,10 +1,11 @@
-const compose = require('koa-compose');
-const statuses = require('statuses');
-const isJSON = require('koa-is-json');
-const Stream = require('stream');
-const onFinished = require('on-finished');
+import Stream from "stream";
+import isJSON from "koa-is-json";
 
-const Koa = require('koa');
+const compose = require("koa-compose");
+const statuses = require("statuses");
+const onFinished = require("on-finished");
+
+const Koa = require("koa");
 
 /**
  * Kronos variant of koa
@@ -25,7 +26,7 @@ export class KronosKoa extends Koa {
    * instead of a fixed one.
    */
   callback() {
-    if (!this.listeners('error').length) this.on('error', this.onerror);
+    if (!this.listeners("error").length) this.on("error", this.onerror);
 
     this.composedMiddleware = compose(this.middleware);
 
@@ -83,7 +84,7 @@ function respond(ctx) {
     return res.end();
   }
 
-  if ('HEAD' == ctx.method) {
+  if ("HEAD" == ctx.method) {
     if (!res.headersSent && isJSON(body)) {
       ctx.length = Buffer.byteLength(JSON.stringify(body));
     }
@@ -94,7 +95,7 @@ function respond(ctx) {
   if (null == body) {
     body = ctx.message || String(code);
     if (!res.headersSent) {
-      ctx.type = 'text';
+      ctx.type = "text";
       ctx.length = Buffer.byteLength(body);
     }
     return res.end(body);
@@ -102,7 +103,7 @@ function respond(ctx) {
 
   // responses
   if (Buffer.isBuffer(body)) return res.end(body);
-  if ('string' == typeof body) return res.end(body);
+  if ("string" == typeof body) return res.end(body);
   if (body instanceof Stream) return body.pipe(res);
 
   // body: json
