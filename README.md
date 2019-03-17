@@ -7,7 +7,6 @@
 [![Coverage Status](https://coveralls.io/repos/Kronos-Integration/kronos-koa/badge.svg)](https://coveralls.io/r/Kronos-Integration/kronos-koa)
 [![Known Vulnerabilities](https://snyk.io/test/github/Kronos-Integration/kronos-koa/badge.svg)](https://snyk.io/test/github/Kronos-Integration/kronos-koa)
 [![GitHub Issues](https://img.shields.io/github/issues/Kronos-Integration/kronos-koa.svg?style=flat-square)](https://github.com/Kronos-Integration/kronos-koa/issues)
-[![Stories in Ready](https://badge.waffle.io/Kronos-Integration/kronos-koa.svg?label=ready&title=Ready)](http://waffle.io/Kronos-Integration/kronos-koa)
 [![Dependency Status](https://david-dm.org/Kronos-Integration/kronos-koa.svg)](https://david-dm.org/Kronos-Integration/kronos-koa)
 [![devDependency Status](https://david-dm.org/Kronos-Integration/kronos-koa/dev-status.svg)](https://david-dm.org/Kronos-Integration/kronos-koa#info=devDependencies)
 [![docs](http://inch-ci.org/github/Kronos-Integration/kronos-koa.svg?branch=master)](http://inch-ci.org/github/Kronos-Integration/kronos-koa)
