@@ -1,3 +1,4 @@
+import builtins from "builtin-modules";
 import json from "rollup-plugin-json";
 import executable from "rollup-plugin-executable";
 import resolve from "rollup-plugin-node-resolve";
